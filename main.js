@@ -1,5 +1,5 @@
 //crudcrud base url
-const url = "https://crudcrud.com/api/9934956adff040cd8b046d2ee2d252a6";
+const url = "http://localhost:3002";
 
 
 async function clicked(){
@@ -20,7 +20,7 @@ async function clicked(){
 
 async function clickProcess(type, obj){
     try{
-        const r = await axios
+       const r = await axios
         .post(url+`/${type}`, obj);
 
         const element = await r.data;
@@ -30,7 +30,7 @@ async function clickProcess(type, obj){
         
     }
     catch(e) {
-        console.log(e);
+        console.log(e); 
     }
 
 }
