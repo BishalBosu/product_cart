@@ -32,11 +32,16 @@ exports.postE = (req, res, next) => {
 	const name = req.body.name
 	const catagory = req.body.catagoty
 
-	Products.electronics.create({
-		price: price,
-		name: name,
-		type: catagory,
-	})
+	Products.electronics
+		.create({
+			price: price,
+			name: name,
+			type: catagory,
+		})
+		.then((item) => {
+			res.json(item)
+		})
+		.catch((err) => console.log(err))
 }
 
 exports.postS = (req, res, next) => {
@@ -49,6 +54,10 @@ exports.postS = (req, res, next) => {
 		name: name,
 		type: catagory,
 	})
+	.then((item) => {
+		res.json(item)
+	})
+	.catch((err) => console.log(err))
 }
 
 exports.postF = (req, res, next) => {
@@ -61,6 +70,10 @@ exports.postF = (req, res, next) => {
 		name: name,
 		type: catagory,
 	})
+	.then((item) => {
+		res.json(item)
+	})
+	.catch((err) => console.log(err))
 }
 
 exports.deleteE = (req, res, next) => {
@@ -68,7 +81,8 @@ exports.deleteE = (req, res, next) => {
 
 	Products.electronics
 		.findByPk(prodId)
-		.then(item => item.destroy())
+		.then((item) => item.destroy())
+		.then(res.json())
 		.catch((err) => console.log(err))
 }
 
@@ -77,7 +91,8 @@ exports.deleteS = (req, res, next) => {
 
 	Products.skincare
 		.findByPk(prodId)
-		.then(item => item.destroy())
+		.then((item) => item.destroy())
+		.then(res.json())
 		.catch((err) => console.log(err))
 }
 
@@ -86,6 +101,7 @@ exports.deleteF = (req, res, next) => {
 
 	Products.food
 		.findByPk(prodId)
-		.then(item => item.destroy())
+		.then((item) => item.destroy())
+		.then(res.json())
 		.catch((err) => console.log(err))
 }

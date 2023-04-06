@@ -25,8 +25,8 @@ async function clickProcess(type, obj){
 
         const element = await r.data;
         
-        document.getElementById(`${type}`).innerHTML += `<div id = "${element._id}" class="mb-3"> &#8377;${element.price} - ${element.catagoty} - ${element.name} 
-        <button type="button" onclick="del('${element._id}', '${element.catagoty}')" class="btn btn-danger"> Delete product</button> </div>`
+        document.getElementById(`${type}`).innerHTML += `<div id = "${element.id}" class="mb-3"> &#8377;${element.price} - ${element.type} - ${element.name} 
+        <button type="button" onclick="del('${element.id}', '${element.type}')" class="btn btn-danger"> Delete product</button> </div>`
         
     }
     catch(e) {
@@ -53,7 +53,8 @@ async function del(id, catagory){
     try{
         const r = await axios
             .delete(url+`/${catagory}/${id}`);
-
+            
+        console.log(7777777777777777777);
         document.getElementById(id).remove();
     }
     catch(err){
@@ -78,8 +79,8 @@ async function showProcess(type){
 
         
         data.forEach(element => {
-                document.getElementById(`${type}`).innerHTML += `<div id = "${element._id}" class="mb-3"> &#8377;${element.price} - ${element.catagoty} - ${element.name} 
-                <button type="button" onclick="del('${element._id}', '${element.catagoty}')" class="btn btn-danger"> Delete product</button> </div>`
+                document.getElementById(`${type}`).innerHTML += `<div id = "${element.id}" class="mb-3"> &#8377;${element.price} - ${element.type} - ${element.name} 
+                <button type="button" onclick="del('${element.id}', '${element.type}')" class="btn btn-danger"> Delete product</button> </div>`
 
             });
         
